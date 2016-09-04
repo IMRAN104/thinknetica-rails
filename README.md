@@ -1,24 +1,12 @@
-# README
+#Learning Rails Project
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is my test rails app I created on Thinknetica online school.
+You could watch my app on Heroku: [https://thinknetica-rails.herokuapp.com](https://thinknetica-rails.herokuapp.com)
 
-Things you may want to cover:
+##Running Locally
 
-* Ruby version
+Make sure you have docker-machine installed, and local host created. [https://github.com/docker/machine](https://github.com/docker/machine)
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```sh
+  docker-compose up --build
+```
