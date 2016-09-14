@@ -35,9 +35,7 @@ class RailwayStationsController < ApplicationController
 
   def destroy
     @railway_station.destroy
-    respond_to do |format|
-      redirect_to railway_stations_url, notice: 'Railway station was successfully destroyed.'
-    end
+    redirect_to railway_stations_url, notice: 'Railway station was successfully destroyed.'
   end
 
   private
