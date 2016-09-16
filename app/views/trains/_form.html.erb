@@ -1,8 +1,14 @@
 <%= form_for(train) do |f| %>
   <%= render 'common/errors', resource: @train %>
+
   <div class="field">
     <%= f.label :number %>
     <%= f.text_field :number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :current_station %>
+    <%= f.collection_select :current_station_id, RailwayStation.all, :id, :title %>
   </div>
 
   <div class="actions">
