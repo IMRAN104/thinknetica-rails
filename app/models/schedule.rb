@@ -1,4 +1,4 @@
 class Schedule < ApplicationRecord
-  belongs_to :routes
-  belongs_to :railway_stations
+  belongs_to :route
+  belongs_to :railway_station
 end

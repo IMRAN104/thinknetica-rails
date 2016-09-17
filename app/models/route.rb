@@ -1,4 +1,4 @@
-class Route < ActiveRecord::Base
+class Route < ApplicationRecord
   has_many :trains
   has_many :schedules
   has_many :railway_stations, through: :schedules

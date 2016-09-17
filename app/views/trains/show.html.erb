@@ -4,6 +4,7 @@
   <strong>Number: </strong>
   <%= @train.number %>
 </p>
+
 <p>
   <strong>Current station: </strong>
   <% if @train.current_station.present? %>
@@ -11,7 +12,15 @@
   <% else %>
     no information
   <% end %>
+</p>
 
+<p>
+  <strong>Route: </strong>
+  <% if @train.route.present? %>
+    <%= @train.route.title %>
+  <% else %>
+    no information
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_train_path(@train) %> |
