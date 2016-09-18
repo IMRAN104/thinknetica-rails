@@ -11,6 +11,11 @@
     <%= f.collection_select :kind, PassengerCar::CARS_TYPE, :to_s, :to_s, include_blank: true  %>
   </div>
 
+  <div class="field">
+    <%= f.label :seats %>
+    <%= f.text_field :seats %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

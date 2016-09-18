@@ -10,5 +10,10 @@
   <%= @passenger_car.kind %>
 </p>
 
+<p>
+  <strong>Seats:</strong>
+  <%= @passenger_car.seats %>
+</p>
+
 <%= link_to 'Edit', edit_passenger_car_path(@passenger_car) %> |
 <%= link_to 'Back', passenger_cars_path %>
