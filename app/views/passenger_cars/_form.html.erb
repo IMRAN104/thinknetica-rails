@@ -1,0 +1,18 @@
+<%= form_for(@passenger_car) do |f| %>
+  <%= render 'common/errors', resource: @passenger_car %>
+
+  <div class="field">
+    <%= f.label :number %>
+    <%= f.text_field :number %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :kind %>
+    <%= f.collection_select :kind, PassengerCar::CARS_TYPE, :to_s, :to_s, include_blank: true  %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>

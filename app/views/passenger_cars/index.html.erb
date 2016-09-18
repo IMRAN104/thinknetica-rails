@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Passenger Cars</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Kind</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render @passenger_cars %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Passenger Cars', new_passenger_car_path %>
