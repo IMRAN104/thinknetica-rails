@@ -1,7 +1,9 @@
 <tr>
   <td><%= passenger_car.number %></td>
+  <td><%= passenger_car.train.number %></td>
   <td><%= passenger_car.kind %></td>
   <td><%= passenger_car.seats %></td>
+  
   <td><%= link_to 'Show', passenger_car %></td>
   <td><%= link_to 'Edit', edit_passenger_car_path(passenger_car) %></td>
   <td><%= link_to 'Destroy', passenger_car, method: :delete, data: { confirm: 'Are you sure?' } %></td>

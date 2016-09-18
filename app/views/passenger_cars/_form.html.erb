@@ -8,6 +8,11 @@
   
   <div class="field">
     <%= f.label :kind %>
+    <%= f.collection_select :train_id, Train.all, :id, :number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :kind %>
     <%= f.collection_select :kind, PassengerCar::CARS_TYPE, :to_s, :to_s, include_blank: true  %>
   </div>
 
