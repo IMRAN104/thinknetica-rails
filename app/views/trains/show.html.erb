@@ -23,5 +23,26 @@
   <% end %>
 </p>
 
+<p>
+<strong>Set of cars: </strong>
+<ul>
+  <% PassengerCar::CARS_TYPE.each do |type| %>
+    <% cars_group = @train.passenger_cars.where(kind: type) %>
+    <li><%= "#{type}: #{cars_group.count}" %></li>
+  <% end %>
+</ul>
+</p>
+
+<p>
+<strong>Set of seats: </strong>
+<ul>
+  <% PassengerCar::CARS_TYPE.each do |type| %>
+    <% query = 'SUM(upper_seats) AS upper, SUM(lower_seats) AS lower' %>
+    <% count = @train.passenger_cars.select(query).where(kind: type) %>
+    <li><%= "#{type} upper/lower: #{count.map(&:upper).first}/#{count.map(&:lower).first}" %></li>
+  <% end %>
+</ul>
+</p>
+
 <%= link_to 'Edit', edit_train_path(@train) %> |
 <%= link_to 'Back', trains_path %>

@@ -2,7 +2,7 @@
   <td><%= passenger_car.number %></td>
   <td><%= passenger_car.train.number %></td>
   <td><%= passenger_car.kind %></td>
-  <td><%= passenger_car.seats %></td>
+  <td><%= passenger_car.upper_seats + passenger_car.lower_seats %></td>
   
   <td><%= link_to 'Show', passenger_car %></td>
   <td><%= link_to 'Edit', edit_passenger_car_path(passenger_car) %></td>
