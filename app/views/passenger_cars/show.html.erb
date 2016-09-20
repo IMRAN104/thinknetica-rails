@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @passenger_car.number %>
+</p>
+
+<p>
+  <strong>Train:</strong>
+  <%= @passenger_car.train.number %>
+</p>
+
+<p>
+  <strong>Kind:</strong>
+  <%= @passenger_car.kind %>
+</p>
+
+<p>
+  <strong>Upper Seats:</strong>
+  <%= @passenger_car.upper_seats %>
+</p>
+
+<p>
+  <strong>Lower Seats:</strong>
+  <%= @passenger_car.lower_seats %>
+</p>
+
+<%= link_to 'Edit', edit_passenger_car_path(@passenger_car) %> |
+<%= link_to 'Back', passenger_cars_path %>
