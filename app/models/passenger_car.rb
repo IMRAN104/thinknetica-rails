@@ -9,6 +9,9 @@ class PassengerCar < ApplicationRecord
   CARS_TYPE = ["open sleeping", 
                "sleepnig compartment"]
 
+  scope :upper_count, -> { sum(:upper_seats) } 
+  scope :lower_count, -> { sum(:lower_seats) } 
+
   private
 
   def default_values 

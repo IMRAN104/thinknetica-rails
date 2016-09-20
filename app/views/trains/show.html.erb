@@ -37,9 +37,9 @@
 <strong>Set of seats: </strong>
 <ul>
   <% PassengerCar::CARS_TYPE.each do |type| %>
-    <% query = 'SUM(upper_seats) AS upper, SUM(lower_seats) AS lower' %>
-    <% count = @train.passenger_cars.select(query).where(kind: type) %>
-    <li><%= "#{type} upper/lower: #{count.map(&:upper).first}/#{count.map(&:lower).first}" %></li>
+    <% upper_count = @train.passenger_cars.where(kind: type).upper_count %>
+    <% lower_count = @train.passenger_cars.where(kind: type).lower_count %>
+    <li><%= "#{type} upper/lower: #{upper_count}/#{lower_count}" %></li>
   <% end %>
 </ul>
 </p>
