@@ -1,0 +1,2 @@
+class FirstClassCar < PassengerCar
+end

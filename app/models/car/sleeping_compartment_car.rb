@@ -1,0 +1,2 @@
+class SleepingCompartmentCar < PassengerCar
+end

@@ -1,0 +1,2 @@
+class OpenSleepingCar < PassengerCar
+end
