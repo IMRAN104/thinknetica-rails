@@ -24,19 +24,9 @@
 </p>
 
 <p>
-<strong>Set of cars: </strong>
-<ul>
-  <% PassengerCar::CARS_TYPE.each do |type| %>
-    <% cars_group = @train.passenger_cars.where(kind: type) %>
-    <li><%= "#{type}: #{cars_group.count}" %></li>
-  <% end %>
-</ul>
-</p>
-
-<p>
 <strong>Set of seats: </strong>
 <ul>
-  <% PassengerCar::CARS_TYPE.each do |type| %>
+  <% PassengerCar.list_of_types.each do |type| %>
     <% upper_count = @train.passenger_cars.where(kind: type).upper_count %>
     <% lower_count = @train.passenger_cars.where(kind: type).lower_count %>
     <li><%= "#{type} upper/lower: #{upper_count}/#{lower_count}" %></li>
