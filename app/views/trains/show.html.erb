@@ -8,7 +8,7 @@
 <p>
   <strong>Current station: </strong>
   <% if @train.current_station.present? %>
-    <%= @train.current_station.title %>
+    <%= link_to "#{@train.current_station.title}", railway_station_path(@train.current_station) %>
   <% else %>
     no information
   <% end %>
@@ -17,19 +17,19 @@
 <p>
   <strong>Route: </strong>
   <% if @train.route.present? %>
-    <%= @train.route.title %>
+    <%= link_to "#{@train.route.title}", route_path(@train.route) %>
   <% else %>
     no information
   <% end %>
 </p>
 
 <p>
-<strong>Set of seats: </strong>
+<strong>Passenger cars: </strong>
 <ul>
-  <% PassengerCar.list_of_types.each do |type| %>
-    <% upper_count = @train.passenger_cars.where(kind: type).upper_count %>
-    <% lower_count = @train.passenger_cars.where(kind: type).lower_count %>
-    <li><%= "#{type} upper/lower: #{upper_count}/#{lower_count}" %></li>
+  <% @train.passenger_cars.each do |car| %>
+    <li>
+      <%= link_to "#{car.number}", passenger_car_path(car) %>
+    </li>
   <% end %>
 </ul>
 </p>

@@ -6,8 +6,11 @@ class PassengerCar < ApplicationRecord
 
   before_save :set_position
 
-  scope :upper_count, -> { sum(:upper_seats) }
-  scope :lower_count, -> { sum(:lower_seats) }
+  scope :seats_count, -> { select('SUM(passenger_cars.upper_seats) AS upper_seats, 
+                                   SUM(passenger_cars.lower_seats) AS lower_seats,
+                                   SUM(passenger_cars.upper_lateral_seats) AS upper_lateral_seats,
+                                   SUM(passenger_cars.lower_lateral_seats) AS lower_lateral_seats,
+                                   SUM(passenger_cars.sitting_seats) AS sitting_seats') }
 
   def self.list_of_types
     types = {}
@@ -20,14 +23,15 @@ class PassengerCar < ApplicationRecord
   private
 
   def uniqe_position
-    if self.train.passenger_cars.where(position: self.position).empty?
-      errors.add(:passenger_cars, "Not uniqe position of passenger car within train!")
+    car = self.train.passenger_cars.where(position: self.position)
+    if car.present? && car.first != self
+      errors.add(:passenger_cars, "not uniqe position within train!")
     end
   end
 
   def set_position
     positions = self.train.passenger_cars.map { |c| c.position.to_i }
-    gap = (1...positions.max).detect { |p| position.find_index(p).nil? }
+    gap = (1...positions.max).detect { |p| positions.find_index(p).nil? }
     self.position ||= gap.nil? ? positions.max + 1 : gap
   end
 end

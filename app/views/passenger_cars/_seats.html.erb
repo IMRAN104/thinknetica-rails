@@ -1,0 +1,17 @@
+<ul>
+  <% if car.upper_seats > 0 %>
+    <li><b>upper seats: </b><%= car.upper_seats %></li>
+  <% end  %>
+  <% if car.lower_seats > 0 %>
+    <li><b>lower seats: </b><%= car.lower_seats %></li>
+  <% end  %>
+  <% if car.upper_lateral_seats > 0 %>
+    <li><b>upper lateral seats: </b><%= car.upper_lateral_seats %></li>
+  <% end  %>
+  <% if car.lower_lateral_seats > 0 %>
+    <li><b>lower lateral seats: </b><%= car.lower_lateral_seats %></li>
+  <% end  %>
+  <% if car.sitting_seats > 0 %>
+    <li><b>sitting seats: </b><%= car.sitting_seats %></li>
+  <% end  %>
+</ul>
