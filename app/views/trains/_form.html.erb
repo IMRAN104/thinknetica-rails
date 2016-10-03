@@ -15,6 +15,11 @@
     <%= f.label :route %>
     <%= f.collection_select :route_id, Route.all, :id, :title %>
   </div>
+  
+  <div class="field">
+    <%= f.check_box :descending %>
+    <%= f.label 'sort from tale to head' %>
+  </div>
 
   <div class="actions">
     <%= f.submit %>

@@ -24,11 +24,16 @@
 </p>
 
 <p>
+  <strong>Sorting: </strong>
+  <%= "#{@train.descending ? 'from tale to head' : 'from head to tale' }" %>
+</p>
+
+<p>
 <strong>Passenger cars: </strong>
 <ul>
-  <% @train.passenger_cars.each do |car| %>
+  <% @train.passenger_cars.ordered(@train.descending).each do |car| %>
     <li>
-      <%= link_to "#{car.number}", passenger_car_path(car) %>
+      <%= link_to "(# #{car.position}) #{car.number}", passenger_car_path(car) %>
     </li>
   <% end %>
 </ul>

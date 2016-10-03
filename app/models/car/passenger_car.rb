@@ -12,6 +12,8 @@ class PassengerCar < ApplicationRecord
                                    SUM(passenger_cars.lower_lateral_seats) AS lower_lateral_seats,
                                    SUM(passenger_cars.sitting_seats) AS sitting_seats') }
 
+  scope :ordered, ->(direction) { order(" 'passenger_cars'.'position' #{ direction ? 'DESC' : 'ASC'}") }
+
   def self.list_of_types
     types = {}
     PassengerCar.subclasses.each do |subclass|
