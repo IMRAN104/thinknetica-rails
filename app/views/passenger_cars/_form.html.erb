@@ -1,4 +1,4 @@
-<%= form_for(@passenger_car) do |f| %>
+<%= form_for(@passenger_car.becomes PassengerCar) do |f| %>
   <%= render 'common/errors', resource: @passenger_car %>
 
   <div class="field">
@@ -7,15 +7,16 @@
   </div>
   
   <div class="field">
-    <%= f.label :kind %>
+    <%= f.label :train %>
     <%= f.collection_select :train_id, Train.all, :id, :number %>
   </div>
 
   <div class="field">
-    <%= f.label :kind %>
-    <%= f.collection_select :kind, PassengerCar::CARS_TYPE, :to_s, :to_s, include_blank: true  %>
+    <%  f.object = @passenger_car.becomes PassengerCar %>
+    <%= f.label :type %>
+    <%= f.collection_select :type, PassengerCar.list_of_types, :first, :last %>
   </div>
-
+  
   <div class="field">
     <%= f.label :upper_seats %>
     <%= f.text_field :upper_seats %>
@@ -24,6 +25,16 @@
   <div class="field">
     <%= f.label :lower_seats %>
     <%= f.text_field :lower_seats %>
+  </div>
+
+  <div class="field">
+    <%= f.label :upper_lateral_seats %>
+    <%= f.text_field :upper_lateral_seats %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :lower_lateral_seats %>
+    <%= f.text_field :lower_lateral_seats %>
   </div>
 
   <div class="actions">

@@ -5,4 +5,8 @@ class Train < ApplicationRecord
   has_many :passenger_cars
 
   validates :number, presence: true
+
+  def seats_count(car_type, seats_type)
+    self.passenger_cars.where(type: car_type).sum(seats_type)
+  end
 end

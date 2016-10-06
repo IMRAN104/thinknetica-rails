@@ -8,7 +8,7 @@
 <p>
   <strong>Current station: </strong>
   <% if @train.current_station.present? %>
-    <%= @train.current_station.title %>
+    <%= link_to "#{@train.current_station.title}", railway_station_path(@train.current_station) %>
   <% else %>
     no information
   <% end %>
@@ -17,29 +17,24 @@
 <p>
   <strong>Route: </strong>
   <% if @train.route.present? %>
-    <%= @train.route.title %>
+    <%= link_to "#{@train.route.title}", route_path(@train.route) %>
   <% else %>
     no information
   <% end %>
 </p>
 
 <p>
-<strong>Set of cars: </strong>
-<ul>
-  <% PassengerCar::CARS_TYPE.each do |type| %>
-    <% cars_group = @train.passenger_cars.where(kind: type) %>
-    <li><%= "#{type}: #{cars_group.count}" %></li>
-  <% end %>
-</ul>
+  <strong>Sorting: </strong>
+  <%= "#{@train.descending ? 'from tale to head' : 'from head to tale' }" %>
 </p>
 
 <p>
-<strong>Set of seats: </strong>
+<strong>Passenger cars: </strong>
 <ul>
-  <% PassengerCar::CARS_TYPE.each do |type| %>
-    <% query = 'SUM(upper_seats) AS upper, SUM(lower_seats) AS lower' %>
-    <% count = @train.passenger_cars.select(query).where(kind: type) %>
-    <li><%= "#{type} upper/lower: #{count.map(&:upper).first}/#{count.map(&:lower).first}" %></li>
+  <% @train.passenger_cars.ordered(@train.descending).each do |car| %>
+    <li>
+      <%= link_to "(# #{car.position}) #{car.number}", passenger_car_path(car) %>
+    </li>
   <% end %>
 </ul>
 </p>

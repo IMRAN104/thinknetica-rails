@@ -1,5 +1,6 @@
 class PassengerCarsController < ApplicationController
   before_action :set_passenger_car, only: [:show, :edit, :update, :destroy]
+  before_action :set_type_list, only: [:show, :edit]
 
   def index
     @passenger_cars = PassengerCar.all
@@ -45,6 +46,12 @@ class PassengerCarsController < ApplicationController
   end
 
   def passenger_car_params
-    params.require(:passenger_car).permit(:number, :kind, :upper_seats, :lower_seats, :train_id)
+    params.require(:passenger_car).permit(:number, :train_id, :type, 
+                                          :upper_seats, :lower_seats, :sitting_seats,
+                                          :upper_lateral_seats, :lower_lateral_seats)
+  end
+
+  def set_type_list
+    @car_type = PassengerCar.subclasses
   end
 end

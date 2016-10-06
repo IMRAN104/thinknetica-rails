@@ -7,14 +7,14 @@
 
 <p>
   <strong>Stations:</strong>
-  <% if @route.railway_stations.empty?%>
+  <% if @route.railway_stations.empty? %>
     empty list
   <% else %>
     <ul>
-      <% @route.railway_stations.each do |station| %>
+      <% @route.railway_stations.ordered.each do |station| %>
         <li><%= station.title %></li>
       <% end %>
-    </ul>
+   </ul>
   <% end %>
 </p>
 

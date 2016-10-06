@@ -7,14 +7,14 @@
     <tr>
       <th>Number</th>
       <th>Train</th>
-      <th>Kind</th>
+      <th>Type</th>
       <th>Seats</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <%= render @passenger_cars %>
+    <%= render partial: 'passenger_car', collection: @passenger_cars, as: :passenger_car %>
   </tbody>
 </table>
 

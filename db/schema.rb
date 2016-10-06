@@ -10,16 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160918184720) do
+ActiveRecord::Schema.define(version: 20161002193856) do
 
   create_table "passenger_cars", force: :cascade do |t|
     t.string   "number"
-    t.integer  "upper_seats"
-    t.integer  "lower_seats"
-    t.string   "kind"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "upper_seats",         default: 0
+    t.integer  "lower_seats",         default: 0
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.integer  "train_id"
+    t.integer  "position"
+    t.string   "type"
+    t.integer  "upper_lateral_seats", default: 0
+    t.integer  "lower_lateral_seats", default: 0
+    t.integer  "sitting_seats",       default: 0
     t.index ["train_id"], name: "index_passenger_cars_on_train_id"
   end
 
@@ -38,8 +42,9 @@ ActiveRecord::Schema.define(version: 20160918184720) do
   create_table "schedules", force: :cascade do |t|
     t.integer  "route_id"
     t.integer  "railway_station_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.integer  "order",              default: 0
   end
 
   create_table "tickets", force: :cascade do |t|
@@ -56,10 +61,11 @@ ActiveRecord::Schema.define(version: 20160918184720) do
 
   create_table "trains", force: :cascade do |t|
     t.string   "number"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.integer  "route_id"
     t.integer  "current_station_id"
+    t.boolean  "descending",         default: false
     t.index ["current_station_id"], name: "index_trains_on_current_station_id"
     t.index ["route_id"], name: "index_trains_on_route_id"
   end
