@@ -4,7 +4,9 @@ Rails.application.routes.draw do
     patch :update_position, on: :member
   end
 
-  resources :trains
+  resources :trains do
+    resources :passenger_cars
+  end
   resources :routes
 
   resources :passenger_cars

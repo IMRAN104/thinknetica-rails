@@ -33,10 +33,14 @@
 <ul>
   <% @train.passenger_cars.ordered(@train.descending).each do |car| %>
     <li>
-      <%= link_to "(# #{car.position}) #{car.number}", passenger_car_path(car) %>
+      <%= link_to "(# #{car.position}) #{car.number}", car %>
     </li>
   <% end %>
 </ul>
+</p>
+
+<p>
+  <%= link_to "Add car", new_train_passenger_car_path(@train) %>
 </p>
 
 <%= link_to 'Edit', edit_train_path(@train) %> |
