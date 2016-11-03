@@ -1,0 +1,18 @@
+<h2>Suitable trains:</h2>
+<p><%= "from #{@station_from.title} to #{@station_to.title}" %></p>
+
+<% if @trains.empty? %>
+  <strong>No result..</strong>
+<% else %>
+  <ul>
+    <% @trains.each do |train| %>
+      <% departure = train["departure"].to_datetime.strftime("%H:%M") %>
+      <% arrival = train["arrival"].to_datetime.strftime("%H:%M") %>
+      <li><%= link_to "#{train["number"]} departure: #{departure} - arrival: #{arrival}", train_path(train["id"]) %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<div>
+  <%= link_to "Try again", search_path %>
+</div>
