@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Tickets</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Number</th>
+      <th>Train</th>
+      <th>Begin station</th>
+      <th>End station</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render @tickets %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Buy another ticket', root_path %>

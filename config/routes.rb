@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   end
 
   resources :routes
+  resources :tickets
 
   resources :passenger_cars
   resources :first_class_cars, controller: 'passenger_cars', type: 'FirstClassCar'
