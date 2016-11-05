@@ -1,0 +1,12 @@
+<h2>Choose your direction</h2>
+
+<%= form_tag result_search_path, method: :get do %>
+  <%= render 'common/errors', resource: @railway_stations.first %>
+  <div class="field">
+    <%= label_tag :station_from, "From:", id: "field-inline" %>
+    <%= select_tag :station_from, options_from_collection_for_select(@railway_stations, :id, :title) %>
+    <%= label_tag :station_to, "To:", id: "field-inline" %>
+    <%= select_tag :station_to, options_from_collection_for_select(@railway_stations, :id, :title) %>
+    <%= submit_tag "Search" %>
+  </div>
+<% end %>

@@ -54,4 +54,6 @@ Rails.application.configure do
   
   config.web_console.whitelisted_ips = '192.168.99.1'
   BetterErrors::Middleware.allow_ip! "0.0.0.0/0"
+
+  config.active_record.time_zone_aware_types = [:datetime, :time]
 end

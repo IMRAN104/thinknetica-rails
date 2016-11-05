@@ -1,0 +1,40 @@
+<h2>Suitable trains:</h2>
+<p><%= "from #{@station_from.title} to #{@station_to.title}" %></p>
+
+<% if @trains.empty? %>
+  <strong>No result..</strong>
+<% else %>
+
+  <table>
+    <thead>
+      <tr>
+        <th width="100px" align="left">Train</th>
+        <th width="80px">Departure</th>
+        <th width="80px">Arrival</th>
+      </tr>
+    </thead>
+    <tboby>
+    <% @trains.each do |train| %>
+      <tr>
+        <% departure = train["departure"].to_datetime.strftime("%H:%M") %>
+        <% arrival = train["arrival"].to_datetime.strftime("%H:%M") %>
+        <td><%= link_to "#{train["number"]}", train_path(train["id"]) %></td>
+        <td align="center"><%= "#{departure} "%></td>
+        <td align="center"><%= "#{arrival} "%></td>
+        <td>
+          <%= form_tag new_ticket_path, method: :get do %>
+            <%= hidden_field_tag :train_id, train["id"] %>
+            <%= hidden_field_tag :begin_station_id, @station_from.id %>
+            <%= hidden_field_tag :end_station_id, @station_to.id %>
+            <%= submit_tag "Buy ticket"%>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </tboby>
+  </table>
+<% end %>
+
+<div>
+  <%= link_to "Try again", search_path %>
+</div>

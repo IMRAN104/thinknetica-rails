@@ -7,7 +7,7 @@
 
 <p>
   <strong>Train:</strong>
-  <%= @passenger_car.train.number %>
+  <%= link_to "#{@passenger_car.train.number}", train_path(@passenger_car.train) %>
 </p>
 
 <p>
