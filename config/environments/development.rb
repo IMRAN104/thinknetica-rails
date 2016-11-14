@@ -56,4 +56,8 @@ Rails.application.configure do
   BetterErrors::Middleware.allow_ip! "0.0.0.0/0"
 
   config.active_record.time_zone_aware_types = [:datetime, :time]
+
+  # Mailer host inside docker container
+  config.action_mailer.default_url_options = { host: '192.168.99.100', port: 3000 }
+  config.action_mailer.delivery_method = :letter_opener
 end

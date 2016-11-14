@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
+  devise_for :users
   
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
+
+  resources :routes
+  resources :tickets
+
   resources :railway_stations do
     patch :update_position, on: :member
     patch :update_time, on: :member
@@ -8,9 +16,6 @@ Rails.application.routes.draw do
   resources :trains do
     resources :passenger_cars
   end
-
-  resources :routes
-  resources :tickets
 
   resources :passenger_cars
   resources :first_class_cars, controller: 'passenger_cars', type: 'FirstClassCar'
