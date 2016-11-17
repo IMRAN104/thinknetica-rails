@@ -18,7 +18,13 @@
       <tr>
         <% departure = train["departure"].to_datetime.strftime("%H:%M") %>
         <% arrival = train["arrival"].to_datetime.strftime("%H:%M") %>
-        <td><%= link_to "#{train["number"]}", train_path(train["id"]) %></td>
+        <td>
+          <% if current_user.admin? %>
+            <%= link_to "#{train["number"]}", train_path(train["id"]) %>
+          <% else %>
+            <%= "#{train["number"]}" %>
+          <% end %>
+        </td>
         <td align="center"><%= "#{departure} "%></td>
         <td align="center"><%= "#{arrival} "%></td>
         <td>

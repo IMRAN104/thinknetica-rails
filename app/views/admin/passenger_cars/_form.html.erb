@@ -1,0 +1,50 @@
+<% passenger_car = @passenger_car.becomes PassengerCar %>
+<%= form_for([:admin, passenger_car]) do |f| %>
+  <%= render 'common/errors', resource: @passenger_car %>
+
+  <div class="field">
+    <%= f.label :number %>
+    <%= f.text_field :number %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :train %>
+    <%= f.collection_select :train_id, Train.all, :id, :number %>
+  </div>
+
+  <div class="field">
+    <%  f.object = passenger_car %>
+    <%= f.label :type %>
+    <%= f.collection_select :type, PassengerCar.list_of_types, :first, :last %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :upper_seats %>
+    <%= f.text_field :upper_seats %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :lower_seats %>
+    <%= f.text_field :lower_seats %>
+  </div>
+
+  <div class="field">
+    <%= f.label :upper_lateral_seats %>
+    <%= f.text_field :upper_lateral_seats %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :lower_lateral_seats %>
+    <%= f.text_field :lower_lateral_seats %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :sitting_seats %>
+    <%= f.text_field :sitting_seats %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>

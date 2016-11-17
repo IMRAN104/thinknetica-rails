@@ -1,0 +1,45 @@
+<p>
+  <strong>Number: </strong>
+  <%= @train.number %>
+</p>
+
+<p>
+  <strong>Current station: </strong>
+  <% if @train.current_station.present? %>
+    <%= link_to "#{@train.current_station.title}", admin_railway_station_path(@train.current_station) %>
+  <% else %>
+    no information
+  <% end %>
+</p>
+
+<p>
+  <strong>Route: </strong>
+  <% if @train.route.present? %>
+    <%= link_to "#{@train.route.title}", admin_route_path(@train.route) %>
+  <% else %>
+    no information
+  <% end %>
+</p>
+
+<p>
+  <strong>Sorting: </strong>
+  <%= "#{@train.descending ? 'from tale to head' : 'from head to tale' }" %>
+</p>
+
+<p>
+<strong>Passenger cars: </strong>
+<ul>
+  <% @train.passenger_cars.ordered(@train.descending).each do |car| %>
+    <li>
+      <%= link_to "(# #{car.position}) #{car.number}", [:admin, car] %>
+    </li>
+  <% end %>
+</ul>
+</p>
+
+<p>
+  <%= link_to "Add car", new_admin_train_passenger_car_path(@train) %>
+</p>
+
+<%= link_to 'Edit', edit_admin_train_path(@train) %> |
+<%= link_to 'Back', admin_trains_path %>

@@ -20,7 +20,7 @@ class TicketsController < ApplicationController
     @ticket = Ticket.new(ticket_params)
 
     if @ticket.save
-      redirect_to ticket_path
+      redirect_to [:admin, @ticket]
     else
       render :new
     end
@@ -28,7 +28,7 @@ class TicketsController < ApplicationController
 
   def destroy
     @ticket.destroy
-    redirect_to tickets_path
+    redirect_to admin_tickets_path
   end
 
   private
