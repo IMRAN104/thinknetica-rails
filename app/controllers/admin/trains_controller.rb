@@ -1,5 +1,4 @@
 class Admin::TrainsController < Admin::BaseController
-  before_action :authenticate_user!
   before_action :set_train, only: [:show, :edit, :update, :destroy]
 
   def index

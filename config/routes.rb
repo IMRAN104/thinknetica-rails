@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     
+    resource :tools, only: :show 
     resources :routes
     
     resources :railway_stations do
