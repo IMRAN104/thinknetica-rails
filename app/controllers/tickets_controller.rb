@@ -1,6 +1,7 @@
 class TicketsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_ticket, only: [:show, :destroy]
+  before_action :set_ticket, only: [:show, :edit, :destroy]
+  before_action :set_train_and_stations, only: [:new, :edit]
 
   def index
     if current_user.admin?
@@ -12,12 +13,12 @@ class TicketsController < ApplicationController
 
   def new
     @ticket = Ticket.new
-    @train_id = params[:train_id]
-    @begin_station_id = params[:begin_station_id]
-    @end_station_id = params[:end_station_id]
   end
 
   def show
+  end
+
+  def edit
   end
 
   def create
@@ -39,6 +40,12 @@ class TicketsController < ApplicationController
 
   def set_ticket
     @ticket = Ticket.find(params[:id])
+  end
+
+  def set_train_and_stations
+    @train_id = params[:train_id]
+    @begin_station_id = params[:begin_station_id]
+    @end_station_id = params[:end_station_id]
   end
 
   def ticket_params

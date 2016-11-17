@@ -1,8 +1,7 @@
-<p>
-  <strong>Number: </strong>
-  <%= @ticket.number %>
-</p>
+<br>
+<h3>Ticket number: <%= @ticket.number %></h3>
 
+<br>
 <p>
   <strong>Train: </strong>
   <%= "#{@ticket.train.number}" %>
@@ -13,4 +12,15 @@
   <%= "from #{@ticket.begin_station.title} to #{@ticket.end_station.title}" %>
 </p>
 
-<%= link_to 'Buy another ticket', root_path %>
+<br>
+<p><strong>Passenger</strong></p>
+<p><strong>First name: </strong><%= "#{@ticket.name}" %></p>
+<p><strong>Second name: </strong><%= "#{@ticket.surname}" %></p>
+<p><strong>Passport: </strong><%= "#{@ticket.passport}" %></p>
+
+<br>
+<%= link_to 'Buy another ticket', root_path %> |
+<%= link_to 'List of tickets', tickets_path %>
+<% if current_user.admin? %>
+   | <%= link_to 'Edit', edit_ticket_path(@ticket, train_id: @ticket.train) %>
+<% end %>

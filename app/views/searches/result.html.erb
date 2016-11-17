@@ -20,7 +20,7 @@
         <% arrival = train["arrival"].to_datetime.strftime("%H:%M") %>
         <td>
           <% if current_user.admin? %>
-            <%= link_to "#{train["number"]}", train_path(train["id"]) %>
+            <%= link_to "#{train["number"]}", admin_train_path(train["id"]) %>
           <% else %>
             <%= "#{train["number"]}" %>
           <% end %>
