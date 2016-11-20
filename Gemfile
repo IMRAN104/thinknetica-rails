@@ -11,6 +11,8 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
+gem 'devise'
+
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'better_errors'
@@ -22,9 +24,11 @@ group :development do
   gem 'listen', '~> 3.0.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+
   gem 'pry-rails'
   gem 'pry-byebug'
   gem 'table_print'
+  gem 'letter_opener_web', '~> 1.2.0'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

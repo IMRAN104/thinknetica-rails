@@ -1,0 +1,22 @@
+<p>
+  <strong>Number:</strong>
+  <%= @passenger_car.number %>
+</p>
+
+<p>
+  <strong>Train:</strong>
+  <%= link_to "#{@passenger_car.train.number}", admin_train_path(@passenger_car.train) %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= PassengerCar.list_of_types[@passenger_car.type] %>
+</p>
+
+<p>
+  <strong>Seats:</strong>
+  <%= render partial: 'seats', locals: { car: @passenger_car } %>
+</p>
+
+<%= link_to 'Edit', edit_admin_passenger_car_path(@passenger_car) %> |
+<%= link_to 'List of cars', admin_passenger_cars_path %>

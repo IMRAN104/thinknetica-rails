@@ -1,22 +1,21 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Tickets</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Number</th>
-      <th>Train</th>
-      <th>Begin station</th>
-      <th>End station</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <%= render @tickets %>
-  </tbody>
-</table>
+<% if @tickets.empty? %>
+  <strong>You have nothing :(</strong><br>
+<% else %>
+  <h1>Tickets</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Number</th>
+        <th>Train</th>
+        <th>Begin station</th>
+        <th>End station</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @tickets %>
+    </tbody>
+  </table>
+<% end %>
 
 <br>
-
 <%= link_to 'Buy another ticket', root_path %>
